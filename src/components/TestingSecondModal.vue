@@ -1,5 +1,5 @@
 <template>
-  <CenteredVueModal>
+  <CenteredModal>
     <div class="flex flex-col gap-8">
       <div>name: {{ name }}</div>
       <div>lastName: {{ lastName }}</div>
@@ -8,13 +8,13 @@
         <AppButton @click="close"> close modal </AppButton>
       </div>
     </div>
-  </CenteredVueModal>
+  </CenteredModal>
 </template>
 
 <script setup lang="ts">
 import { AppButton } from ".";
 import { useFirstModal } from "../composables";
-import { CenteredVueModal } from "../lib";
+import { CenteredModal } from "../lib";
 
 type Props = {
   name: string;

@@ -15,14 +15,14 @@
         </div>
       </div>
     </div>
-    <ModalContainer />
+    <ModalsContainer />
   </div>
 </template>
 
 <script setup lang="ts">
 import { AppButton } from "./components";
 import { useFirstModal, useSecondModal } from "./composables";
-import { ModalContainer } from "./lib";
+import { ModalsContainer } from "./lib";
 import "./main.css";
 
 const { open: openFirst } = useFirstModal();

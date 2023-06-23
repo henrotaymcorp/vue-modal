@@ -1,5 +1,11 @@
 # @henrotaymcorp/vue-modal
 
+## 0.0.4
+
+### Patch Changes
+
+- 0647ca2: Exporting missing plugin
+
 ## 0.0.3
 
 ### Patch Changes

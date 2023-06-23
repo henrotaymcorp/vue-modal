@@ -1,5 +1,11 @@
 # @henrotaymcorp/vue-modal
 
+## 0.0.5
+
+### Patch Changes
+
+- 8983a9b: Defining emitter globally during plugin installation.
+
 ## 0.0.4
 
 ### Patch Changes

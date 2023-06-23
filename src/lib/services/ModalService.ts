@@ -1,25 +1,28 @@
 import { Component } from "vue";
 import { ModalFactory } from "../factories";
-import { ComponentProps } from "../types";
-import { emitter } from "../mitt";
+import { ComponentProps, ModalEmitter } from "../types";
 
 class ModalService<TComponent extends Component> {
   private _component;
   private _uuid;
   private _modalFactory;
+  private _emitter;
 
   public constructor({
     component,
     uuid,
     modalFactory,
+    emitter,
   }: {
     component: TComponent;
     uuid: string;
     modalFactory: ModalFactory;
+    emitter: ModalEmitter;
   }) {
     this._component = component;
     this._uuid = uuid;
     this._modalFactory = modalFactory;
+    this._emitter = emitter;
   }
 
   public open(props: Omit<ComponentProps<TComponent>, "close">) {
@@ -29,10 +32,10 @@ class ModalService<TComponent extends Component> {
       props: { ...props, close: () => this.close() },
     });
 
-    emitter.emit("store", modal);
+    this._emitter.emit("store", modal);
   }
   public close() {
-    emitter.emit("destroy", this._component);
+    this._emitter.emit("destroy", this._component);
   }
 }
 

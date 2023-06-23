@@ -1,17 +1,19 @@
 import { Component } from "vue";
 import { Modal } from "../models";
-import { emitter } from "../mitt";
+import { ModalEmitter } from "../types";
 
 class ModalContainerService {
   private _modals: Modal[];
+  private _emitter;
 
-  public constructor() {
+  public constructor({ emitter }: { emitter: ModalEmitter }) {
     this._modals = [];
+    this._emitter = emitter;
   }
 
   public setup() {
-    emitter.on("destroy", (component) => this.destroy(component));
-    emitter.on("store", (modal) => this.store(modal));
+    this._emitter.on("destroy", (component) => this.destroy(component));
+    this._emitter.on("store", (modal) => this.store(modal));
   }
 
   public destroy<TComponent extends Component>(component: TComponent) {
@@ -42,6 +44,10 @@ class ModalContainerService {
 
   public get modals() {
     return this._modals;
+  }
+
+  public get emitter() {
+    return this._emitter;
   }
 }
 

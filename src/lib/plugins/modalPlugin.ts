@@ -1,26 +1,24 @@
 import { Plugin } from "vue";
 import { ReactiveModalContainerFactory } from "../factories";
-import { Testastos } from "../types";
-
-declare module "vue" {
-  interface ComponentCustomProperties {
-    $vueModal: Testastos;
-  }
-}
+import { ModalEmitterEvents, ReactiveModalContainer } from "../types";
+import mitt from "mitt";
 
 declare global {
   interface Window {
-    vueModal: Testastos;
+    modalPlugin: {
+      container: ReactiveModalContainer;
+    };
   }
 }
 
-const vueModal: Plugin = {
-  install(app) {
+const modalPlugin: Plugin = {
+  install() {
+    const emitter = mitt<ModalEmitterEvents>();
     const factory = new ReactiveModalContainerFactory();
-    const vueModal = factory.create();
-    app.config.globalProperties.$vueModal = vueModal;
-    window.vueModal = vueModal;
+    window.modalPlugin = {
+      container: factory.create(emitter),
+    };
   },
 };
 
-export default vueModal;
+export default modalPlugin;

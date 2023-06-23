@@ -1,5 +1,5 @@
-// import { Testastos } from "../types";
+// import { ReactiveModalContainer } from "../types";
 
-const useModalContainer = () => window.vueModal;
+const useModalContainer = () => window.modalPlugin.container;
 
 export default useModalContainer;

@@ -1,8 +1,9 @@
 import { ModalContainerService } from "../../services";
+import { ModalEmitter } from "../../types";
 
 class ModalContainerServiceFactory {
-  public create() {
-    return new ModalContainerService();
+  public create(emitter: ModalEmitter) {
+    return new ModalContainerService({ emitter });
   }
 }
 

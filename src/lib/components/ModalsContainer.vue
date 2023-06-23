@@ -47,5 +47,5 @@ type Props = {
 withDefaults(defineProps<Props>(), { overlay: "bg-black opacity-25" });
 
 const { modals, destroyLast, hasModals } = useModalContainer();
-const lastIndex = computed(() => modals.length - 1);
+const lastIndex = computed(() => modals.value.length - 1);
 </script>

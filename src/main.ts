@@ -1,5 +1,5 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import { vueModal } from "./lib/plugins";
+import { modalPlugin } from "./lib";
 
-createApp(App).use(vueModal).mount("#app");
+createApp(App).use(modalPlugin).mount("#app");

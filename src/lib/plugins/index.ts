@@ -1,1 +1,1 @@
-export { default as vueModal } from "./vueModal";
+export { default as modalPlugin } from "./modalPlugin";

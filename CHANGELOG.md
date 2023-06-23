@@ -1,5 +1,11 @@
 # @henrotaymcorp/vue-modal
 
+## 0.0.3
+
+### Patch Changes
+
+- a12466d: Using a global object for modals.
+
 ## 0.0.2
 
 ### Patch Changes

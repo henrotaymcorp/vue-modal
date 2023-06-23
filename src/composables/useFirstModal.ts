@@ -9,6 +9,7 @@ const useFirstModal = () => {
       name: useRandomText(),
       lastName: "first",
     });
+
   return { open, close };
 };
 

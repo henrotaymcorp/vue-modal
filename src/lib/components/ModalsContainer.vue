@@ -8,7 +8,7 @@
       leave-active-class="transition-all transform duration-500 ease-in-out"
       leave-to-class="opacity-0"
     >
-      <div v-if="container.hasModals" class="fixed inset-0 z-[9999]">
+      <div v-if="hasModals" class="fixed inset-0 z-[9999]">
         <TransitionGroup
           enter-from-class="opacity-0"
           enter-active-class="transition-all transform duration-500 ease-in-out"
@@ -17,10 +17,7 @@
           leave-active-class="transition-all transform duration-500 ease-in-out"
           leave-to-class="opacity-0"
         >
-          <template
-            v-for="(modal, index) in container.modals.value"
-            :key="modal.uuid"
-          >
+          <template v-for="(modal, index) in modals" :key="modal.uuid">
             <component
               :is="modal.component"
               v-bind="modal.props"
@@ -32,7 +29,7 @@
           class="absolute inset-0"
           :class="overlay"
           :style="{ zIndex: lastIndex - 1 }"
-          @click="container.destroyLast"
+          @click="destroyLast"
         ></div>
       </div>
     </Transition>
@@ -49,6 +46,6 @@ type Props = {
 
 withDefaults(defineProps<Props>(), { overlay: "bg-black opacity-25" });
 
-const container = useModalContainer();
-const lastIndex = computed(() => container.modals.value.length - 1);
+const { modals, destroyLast, hasModals } = useModalContainer();
+const lastIndex = computed(() => modals.length - 1);
 </script>

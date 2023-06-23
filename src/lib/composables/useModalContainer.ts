@@ -1,5 +1,5 @@
-import { ModalContainerService } from "../services";
+// import { Testastos } from "../types";
 
-const useModalContainer = () => new ModalContainerService();
+const useModalContainer = () => window.vueModal;
 
 export default useModalContainer;
